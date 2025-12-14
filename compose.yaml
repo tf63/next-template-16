@@ -29,3 +29,16 @@ services:
       - ./tests/test-results:/work/tests/test-results
       - ./tests/vrt/storybook-visual.spec.ts:/work/tests/vrt/storybook-visual.spec.mts
       - ./configs/playwright/playwright.vrt.config.ts:/work/playwright.config.ts
+
+  openapi-mcp:
+    build:
+      context: .
+      dockerfile: docker/openapi-mcp/Dockerfile
+    working_dir: /app
+    stdin_open: true
+
+  prism:
+    image: stoplight/prism:5
+    command: mock -h 0.0.0.0 /openapi.json
+    volumes:
+      - ./docs/api/v1/openapi.json:/openapi.json

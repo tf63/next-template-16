@@ -40,6 +40,8 @@
 	"devDependencies": {
 		"@biomejs/biome": "2.3.4",
 		"@commitlint/cli": "19.8.1",
+		"@faker-js/faker": "10.1.0",
+		"@modelcontextprotocol/sdk": "1.24.3",
 		"@next/bundle-analyzer": "16.0.10",
 		"@playwright/test": "1.56.1",
 		"@storybook/addon-a11y": "10.0.6",
@@ -58,7 +60,9 @@
 		"@vitejs/plugin-react": "5.1.1",
 		"jsdom": "27.2.0",
 		"lefthook": "1.13.0",
+		"msw": "2.12.4",
 		"openapi-generate-html": "0.5.3",
+		"orval": "7.17.0",
 		"plop": "4.0.4",
 		"prettier": "3.6.2",
 		"prettier-plugin-tailwindcss": "0.6.14",

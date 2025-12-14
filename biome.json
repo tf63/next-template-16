@@ -3,6 +3,7 @@
 	"files": {
 		"includes": [
 			"**",
+			"!**/src/api/**/*",
 			"!**/*.css",
 			"!**/package-lock.json",
 			"!**/yarn.lock",
