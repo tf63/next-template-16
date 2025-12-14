@@ -1,0 +1,43 @@
+pre-commit:
+  piped: true
+  commands:
+    typecheck:
+      priority: 1
+      glob: "*.{ts,tsx}"
+      run: |
+        pnpm typecheck
+      skip:
+        - merge
+        - rebase
+
+    biome:
+      priority: 2
+      glob: "*.{js,ts,cjs,mjs,jsx,tsx,json,jsonc}"
+      run: |
+        pnpm biome check {staged_files} --write
+      stage_fixed: true
+      skip:
+        - merge
+        - rebase
+
+    prettier:
+      priority: 3
+      glob: "*.{md,mdx,yml,yaml,css,html}"
+      run: |
+        pnpm prettier {staged_files} --write
+      stage_fixed: true
+      skip:
+        - merge
+        - rebase
+
+post-merge:
+  commands:
+    pnpm:
+      glob: "{package.json,pnpm-lock.yaml}"
+      run: pnpm install
+
+commit-msg:
+  commands:
+    commitlint:
+      run: |
+        pnpm commitlint --edit {1}

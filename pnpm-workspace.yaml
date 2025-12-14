@@ -1,0 +1,9 @@
+minimumReleaseAge: 2880
+minimumReleaseAgeExclude:
+  - "next@15.5.9"
+  - "@next/env@15.5.9"
+  - "@next/bundle-analyzer@15.5.9"
+  - "react@19.2.3"
+  - "react-dom@19.2.3"
+  - "@types/react@19.2.3"
+  - "@types/react-dom@19.2.3"

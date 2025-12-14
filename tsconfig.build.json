@@ -1,0 +1,23 @@
+{
+	"extends": "./tsconfig.json",
+	"compilerOptions": {
+		"plugins": [{ "name": "next" }]
+	},
+	"include": ["src", ".next/types/**/*.ts"],
+	"exclude": [
+		"node_modules",
+		"out",
+		"dist",
+		"build",
+		".next",
+		"bower_components",
+		"jspm_packages",
+		"**/*.stories.tsx",
+		"**/*.test.ts",
+		"**/*.test.tsx",
+		"**/*.spec.ts",
+		"**/*.spec.tsx",
+		"**/*.figma.ts",
+		"**/*.figma.tsx"
+	]
+}

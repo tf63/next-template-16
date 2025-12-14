@@ -1,0 +1,15 @@
+import type { Meta, StoryObj } from "@storybook/nextjs-vite"
+import { {{pascalCase (extractFilename path)}} } from "./{{kebabCase (extractFilename path)}}"
+
+export default {
+	title: "{{pascalCase (extractComponentPrefix path)}}/{{pascalCase (extractFilename path)}}",
+	component: {{pascalCase (extractFilename path)}},
+} satisfies Meta<typeof {{pascalCase (extractFilename path)}}>
+
+type StoryType = StoryObj<typeof {{pascalCase (extractFilename path)}}> & {
+	args: React.ComponentProps<typeof {{pascalCase (extractFilename path)}}>
+}
+
+export const Default: StoryType = {
+	args: {},
+}

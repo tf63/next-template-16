@@ -1,0 +1,13 @@
+@import "../src/styles/globals.css";
+
+/* https://github.com/storybookjs/storybook/issues/32443 */
+/* storybook-addon-pseudo-statesがtailwindv4をサポートしてないことへの対策 */
+@custom-variant hover (&:hover);
+@custom-variant active (&:active);
+@custom-variant disabled (&:disabled);
+@custom-variant focus (&:focus);
+@custom-variant focus-visible (&:focus-visible);
+@custom-variant focus-within (&:focus-within);
+@custom-variant visited (&:visited);
+@custom-variant target (&:target);
+@custom-variant link (&:link);

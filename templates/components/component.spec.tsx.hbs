@@ -1,0 +1,12 @@
+import { composeStories } from "@storybook/nextjs-vite"
+import { render } from "@testing-library/react"
+import { describe, it } from "vitest"
+import * as stories from "./{{kebabCase (extractFilename path)}}.stories"
+
+const { Default } = composeStories(stories)
+
+describe("{{pascalCase (extractFilename path)}}", () => {
+	it("renders {{pascalCase (extractFilename path)}} component", () => {
+		render(<Default />)
+	})
+})

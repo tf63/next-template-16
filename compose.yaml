@@ -1,0 +1,31 @@
+services:
+  # 確認用のNext.jsコンテナ
+  # app:
+  #   build:
+  #     context: .
+  #     dockerfile: docker/app/Dockerfile
+  #     target: runner
+  #     args:
+  #       - NODE_ENV=development
+  #       - NEXT_PUBLIC_APP_URL=http://localhost:3000
+  #   ports:
+  #     - "127.0.0.1:3000:3000"
+  #   working_dir: /app
+  #   env_file:
+  #     - ./.env
+  #   stdin_open: true
+  #   volumes:
+  #     - /app/node_modules
+
+  vrt:
+    build:
+      context: .
+      dockerfile: docker/playwright/Dockerfile
+    ports:
+      - "127.0.0.1:9001:9001"
+    working_dir: /work
+    stdin_open: true
+    volumes:
+      - ./tests/test-results:/work/tests/test-results
+      - ./tests/vrt/storybook-visual.spec.ts:/work/tests/vrt/storybook-visual.spec.mts
+      - ./playwright.vrt.config.ts:/work/playwright.config.ts
