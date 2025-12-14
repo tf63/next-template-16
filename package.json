@@ -1,6 +1,6 @@
 {
 	"type": "module",
-	"name": "next-template-15",
+	"name": "next-template-16",
 	"version": "0.1.0",
 	"private": true,
 	"scripts": {
@@ -10,7 +10,7 @@
 		"storybook": "storybook dev -p 6006 --no-open",
 		"storybook:build": "storybook build",
 		"start": "next start",
-		"typecheck": "tsc --noEmit",
+		"typecheck": "tsc --noEmit --project configs/tsconfig/tsconfig.test.json",
 		"lint": "biome lint .",
 		"lint:fix": "biome lint . --write",
 		"format": "biome format . && prettier .",

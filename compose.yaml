@@ -28,4 +28,4 @@ services:
     volumes:
       - ./tests/test-results:/work/tests/test-results
       - ./tests/vrt/storybook-visual.spec.ts:/work/tests/vrt/storybook-visual.spec.mts
-      - ./playwright.vrt.config.ts:/work/playwright.config.ts
+      - ./configs/playwright/playwright.vrt.config.ts:/work/playwright.config.ts
