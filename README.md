@@ -4,17 +4,17 @@ A template project for Next.js 16 + React 19
 
 ## Tech Stack
 
-| Category           | Technology                                |
-| ------------------ | ----------------------------------------- |
-| Framework          | Next.js 16, React 19                      |
-| Language           | TypeScript 5.9                            |
-| Styling            | Tailwind CSS 4                            |
-| Form               | React Hook Form, Zod                      |
-| Testing            | Vitest, Testing Library, Playwright (VRT) |
-| Storybook          | Storybook 10                              |
-| Linter / Formatter | Biome, Prettier                           |
-| Git Hooks          | Lefthook, Commitlint                      |
-| Package Manager    | pnpm 10                                   |
+| Category           | Technology                                       |
+| ------------------ | ------------------------------------------------ |
+| Framework          | Next.js 16.0.10, React 19.2.3                    |
+| Language           | TypeScript                                       |
+| Styling            | Tailwind CSS, Tailwind Merge 3.4.0               |
+| Form               | React Hook Form 7.56.4, Zod 4.1.13               |
+| Testing            | Vitest, Testing Library, Playwright 1.56.1 (VRT) |
+| Storybook          | Storybook 10.0.6                                 |
+| Linter / Formatter | Biome 2.3.4, Prettier                            |
+| Git Hooks          | Lefthook, Commitlint 19.8.1                      |
+| Package Manager    | pnpm                                             |
 
 ## Installation
 
@@ -68,7 +68,23 @@ pnpm install
 | --------------- | ------------------------- |
 | `pnpm generate` | Generate component (plop) |
 
-## Visual Regression Testing with Playwright and Storybook
+### API Documentation
+
+| Command              | Description                   |
+| -------------------- | ----------------------------- |
+| `pnpm swagger`       | Build and serve Swagger UI    |
+| `pnpm swagger:build` | Build Swagger UI from OpenAPI |
+| `pnpm swagger:serve` | Serve Swagger UI (port 6608)  |
+
+### Code Generation
+
+| Command         | Description               |
+| --------------- | ------------------------- |
+| `pnpm generate` | Generate component (plop) |
+
+Note: Use `orval` configuration for API client generation from OpenAPI specs
+
+## Visual Regression Testing (VRT) with Playwright and Storybook
 
 ### Setup
 

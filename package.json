@@ -24,6 +24,7 @@
 		"swagger": "pnpm swagger:build && pnpm swagger:serve",
 		"swagger:build": "openapi-generate-html -i docs/api/v1/openapi.json --theme light --ui stoplight -o docs/api/v1/stoplight/index.html",
 		"swagger:serve": "serve -l 6608 docs/api/v1/stoplight",
+		"orval": "orval --config ./configs/orval/orval.config.ts",
 		"generate": "plop",
 		"prepare": "lefthook install"
 	},
