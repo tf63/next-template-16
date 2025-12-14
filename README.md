@@ -1,12 +1,12 @@
-# Next.js 15 Template
+# Next.js 16 Template
 
-A template project for Next.js 15 + React 19
+A template project for Next.js 16 + React 19
 
 ## Tech Stack
 
 | Category           | Technology                                |
 | ------------------ | ----------------------------------------- |
-| Framework          | Next.js 15, React 19                      |
+| Framework          | Next.js 16, React 19                      |
 | Language           | TypeScript 5.9                            |
 | Styling            | Tailwind CSS 4                            |
 | Form               | React Hook Form, Zod                      |
