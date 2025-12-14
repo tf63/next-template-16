@@ -10,7 +10,7 @@ description: "TypeScript coding style instructions for the project."
 - **変更は必要最低限に留める**
 - **他のドキュメントやコードスタイルと一貫性を保つ**
 - **コメントは必要に応じて追加するが、過剰なコメントは避ける**
-- **eslint-disable や @ts-ignore の使用は避ける**
+- **biome-ignore や @ts-ignore の使用は避ける**
 
 # TypeScript
 
