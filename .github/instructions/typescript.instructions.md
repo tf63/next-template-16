@@ -21,3 +21,20 @@ description: "TypeScript coding style instructions for the project."
 # Next.js
 
 - Next.js App Router を使用する
+
+# コンポーネント
+
+- 各コンポーネントファイル、Story ファイルはすべて同じディレクトリに配置する（コロケーション）
+- ファイル名はケバブケース (kebab-case) を採用する
+
+```
+src/
+ ├ features/
+  ├ some-feature/
+   ├ components/
+    ├ some-component/
+     ├ some-component.tsx           # コンポーネント本体
+     ├ some-component.container.tsx # Container コンポーネント (任意)
+     ├ some-component.widget.tsx    # Widget コンポーネント (任意)
+     ├ some-component.stories.tsx   # Storybook ストーリーファイル
+```

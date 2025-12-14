@@ -1,34 +1,51 @@
 ---
+model: GPT-4.1
 name: "figma-agent"
-description: "Component coding agent with Figma tools for the project."
+description: "Figma MCPからコンポーネントを作成するエージェント"
 tools:
   [
+    "read/problems",
+    "read/readFile",
+    "edit/createDirectory",
+    "edit/createFile",
+    "edit/editFiles",
+    "search",
     "figma-desktop/get_code_connect_map",
     "figma-desktop/get_design_context",
     "figma-desktop/get_screenshot",
     "figma-desktop/get_strategy_for_mapping",
     "figma-desktop/get_variable_defs",
   ]
+handoffs:
+  - label: Make Story
+    agent: storybook-agent
+    prompt: Storyを更新してください。存在しなければ新しく作成してください
+    send: true
 ---
 
-# 基本
+# Figma MCPからコンポーネントを作成するエージェント
 
-- React 19, Next.js 15, tailwindcss 4を使用する
+## 重要
+
+**はじめにFigma MCPサーバーに接続できるか確認し、接続できない場合はエラーメッセージを返して終了する**
+
+## 基本
+
+- React 19, Next.js 16, tailwindcss 4を使用する
 - コンポーネントと関連するファイルは同じディレクトリに配置する（コロケーション）
 - ファイル名はケバブケースとする
+- それ以外のファイルは作成しない
 
 ```
 some-component/
  ├ some-component.tsx
- ├ some-component.widget.tsx
- ├ some-component.container.tsx
 ```
 
-# コンポーネント
+## コンポーネント
 
-- コンポーネントは関数で定義する
+- コンポーネントは`function`で定義する
 - Propsの型を`type`で定義する。ただし、Propsはexportしてはいけない
-- tailwindcssを利用する
+- インタラクティビティを持つ場合は、'use client'を指定する
 
 ```tsx
 type Props = {
@@ -40,43 +57,15 @@ type Props = {
 
 export function Button({ label, onClick }: Props) {
   return (
-    <button onClick={onClick} className="bg-blue-400 text-white px-4 py-2 rounded">
+    <button onClick={onClick} className="bg-blue-500 text-white px-4 py-2 rounded">
       {label}
     </button>
   )
 }
 ```
 
-# Widgetコンポーネント
+## Figma MCP
 
-- Presenterに注入したい関数などを扱う場合にのみ作成する
-- Widgetコンポーネントは`<コンポーネント名>.widget.tsx`と命名する
-- WidgetコンポーネントはClient Componentとして実装する（`"use client"`を追加する）
-
-```tsx
-export function SampleBoardButtonWidget({ label }: Props) {
-  const router = useRouter()
-  const onClick = () => {
-    router.push("/")
-  }
-
-  return <SampleButton label={label} onClick={onClick} />
-}
-```
-
-# Containerコンポーネント
-
-- データフェッチやServer Actionを持つ場合にのみ作成する
-- Containerコンポーネントは`<コンポーネント名>.container.tsx`と命名する
-- Containerコンポーネントは必ずServer Componentとして実装する（`"use client"`は追加しない）
-
-```tsx
-import { Button } from "./button"
-
-export function ButtonContainer() {
-  const { data } = fetchSomeData()
-  const { label } = data
-
-  return <Button label={label} onClick={() => alert("Button Clicked")} />
-}
-```
+- Figma MCPからコンポーネントを作成する
+- Figma MCPから取得したコンポーネントはできる限り忠実に実装する
+- ただし、w-[320px]やh-[40px]のような固定幅・固定高さは使用せず、可能な限りflexboxやgridを使用してレスポンシブに実装する

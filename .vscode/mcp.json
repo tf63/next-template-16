@@ -1,0 +1,29 @@
+{
+	"servers": {
+		"figma-desktop": {
+			"type": "http",
+			"url": "http://127.0.0.1:3845/mcp"
+		},
+		"chrome-devtools": {
+			"command": "npx",
+			"args": ["-y", "chrome-devtools-mcp@latest"],
+			"type": "stdio"
+		},
+		"kiri": {
+			"command": "npx",
+			"args": ["kiri-mcp-server@latest", "--repo", "src", "--db", ".kiri/index.duckdb", "--watch"],
+			"type": "stdio"
+		},
+		"next-devtools": {
+			"command": "npx",
+			"args": ["-y", "next-devtools-mcp@latest"],
+			"type": "stdio"
+		},
+		"openapi": {
+			"command": "docker",
+			"args": ["compose", "attach", "openapi-mcp"],
+			"type": "stdio"
+		}
+	},
+	"inputs": []
+}

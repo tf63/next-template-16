@@ -1,11 +1,20 @@
 ---
+model: GPT-4.1
 name: "component-agent"
-description: "Component coding agent for the project."
+description: "コンポーネントを作成するエージェント"
+tools: ["read/problems", "read/readFile", "edit/createDirectory", "edit/createFile", "edit/editFiles", "search"]
+handoffs:
+  - label: Make Story
+    agent: storybook-agent
+    prompt: Storyを更新してください。存在しなければ新しく作成してください
+    send: true
 ---
 
-# 基本
+# コンポーネントを作成するエージェント
 
-- React 19, Next.js 15, tailwindcss 4を使用する
+## 基本
+
+- React 19, Next.js 16, tailwindcss 4を使用する
 - コンポーネントと関連するファイルは同じディレクトリに配置する（コロケーション）
 - ファイル名はケバブケースとする
 
@@ -16,11 +25,11 @@ some-component/
  ├ some-component.container.tsx
 ```
 
-# コンポーネント
+## コンポーネント
 
 - コンポーネントは関数で定義する
 - Propsの型を`type`で定義する。ただし、Propsはexportしてはいけない
-- tailwindcssを利用する
+- tailwindcssを利用し、color, spacing, typographyなどはデザイントークンを使用する
 
 ```tsx
 type Props = {
@@ -32,35 +41,17 @@ type Props = {
 
 export function Button({ label, onClick }: Props) {
   return (
-    <button onClick={onClick} className="bg-blue-400 text-white px-4 py-2 rounded">
+    <button onClick={onClick} className="bg-blue-500 text-white px-4 py-2 rounded">
       {label}
     </button>
   )
 }
 ```
 
-# Widgetコンポーネント
-
-- Presenterに注入したい関数などを扱う場合にのみ作成する
-- Widgetコンポーネントは`<コンポーネント名>.widget.tsx`と命名する
-- WidgetコンポーネントはClient Componentとして実装する（`"use client"`を追加する）
-
-```tsx
-export function SampleBoardButtonWidget({ label }: Props) {
-  const router = useRouter()
-  const onClick = () => {
-    router.push("/")
-  }
-
-  return <SampleButton label={label} onClick={onClick} />
-}
-```
-
-# Containerコンポーネント
+## Containerコンポーネント
 
 - データフェッチやServer Actionを持つ場合にのみ作成する
 - Containerコンポーネントは`<コンポーネント名>.container.tsx`と命名する
-- Containerコンポーネントは必ずServer Componentとして実装する（`"use client"`は追加しない）
 
 ```tsx
 import { Button } from "./button"
