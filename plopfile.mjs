@@ -5,7 +5,7 @@ function extractFilename(filePath) {
 }
 
 function extractComponentPrefix(filePath) {
-	return filePath.split("/")[0]
+	return filePath.split("/")[1]
 }
 
 export default (plop) => {
